@@ -33,4 +33,13 @@ class TodoListTest extends TestCase
                     ->json();
         $this->assertEquals($response['name'], $this->todolist->name);
     }
+
+    public function test_create_new_todolist(){
+        $data = [
+            'name' => 'my first list'
+        ];
+        $response = $this->postJson(route('todo-list.store',$data))->assertCreated()->json();
+        $this->assertEquals('my first list',$response['name']);
+        $this->assertDatabaseHas('todo_lists',$data);
+    }
 }
