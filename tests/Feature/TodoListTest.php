@@ -13,10 +13,10 @@ class TodoListTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_todo_list_fetch()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        
+        $response = $this->getJson(route('todo-list.index'));
+        $this->assertEquals(1,count($response->json()));
     }
 }
