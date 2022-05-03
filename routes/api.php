@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('todo-list',[TodoListController::class,'index'])->name('todo-list.index');
-Route::get('todo-list/{id}',[TodoListController::class,'show'])->name('todo-list.show');
+Route::get('todo-list/{todolist}',[TodoListController::class,'show'])->name('todo-list.show');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
